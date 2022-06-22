@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "roleplaychecker",
+  "databaseURL": "https://roleplaychecker-default-rtdb.firebaseio.com/",
+  "private_key_id": "2fad747e33b70b440553065465eb49dc2ba9d7bf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQComxkfeI22JkX2\nUEYKfLil9HXP+smMfnXi45qhdGwJVzdIfrZXZ9rzpo7U0Vx4FVySjyIoINVloMZk\n6OVlXnbWKdmkUhMbDhS7fGUGMJv3fm5/raFTF5eG+7/3PXXJzzuY4OroSBZV98rN\nAvyy067kHsGe/zAwYRFrYcXyJT4YSy7UDldUjQsRCMlN939lxzSpQOftFuOFZRc6\nhX89nqKT6qF9WrhkkhdHruYxp9cvQKeRGrLGLyEwutOp61SLZL8DdLrdU38XJ/F7\ni50Pu0boY0qhZNU1aKCUYF9ZnJsv5zzDvkx54a5No5+VGM+jA3B/aJbXEsptClxy\nN6hxFLwZAgMBAAECggEAKgWt90gGmdVkLoXHTynSo5oQGuv4e8mw/AGaMo9ftdxE\n7Q6Xx6Uczwk+JBCiKVO5pNWDv9ifFxtBFzlsox0uJSZ9FhVWqbGSvT+9thM7bC3Y\nwH237Yu9umjYaXip+MhrpCi6o3YECx0dMIeED9XuivCXdVdI3WXz/3145mcd2NPM\noK453HYojwSYWWoY8ztDrkm328s1lV/ASx05mQrQDVj8o/Ffp/2B+/ePnwnHn8sK\nQTFtpNmVHOpbzmh8zbVIUvaKyuF3ROZkzbQHEDaPxn9o4qJl1y5br32S+9c5mHHm\n8pKz4YNfRvtrgvsJgTYgGt29mlY4IEWtAZXc2XiOeQKBgQDSDuJvr9iRivkkepvq\n9DdBwZ4TIq3F8HIvjmzkLvlyq0hllMTUbRf8KSNx5zfSCmjLQLF44YDP3GFhRrcu\n9Fa6hRt7vxAUPpTm74zny/pYh3JCnW/YOLUomt+HdyVVRgAJKkSaBnp0oR5QzdaD\n6l1BLDtTZ450bt+FImnoROj0UwKBgQDNe07Iuczggc+1aEYiOwR6SzME2ejz8hZU\nrcvcQIKAbub5qRw+iMb3RKMIW7fqqd0gPIr46MyhKLl6hn6K3WSgBuBxuBqSVfZZ\nUSVobsQI2WJjCuVG0A/MpEE0RPtnZWGttvok/ATxuuXAJjpLh4FFOFDlZb1outcI\nuVy+JUDAYwKBgQCPi05fxkn3g4Gn1QWRdJwCGn6cUvlvJ1XQe8Kb2CHso3HQwO4U\nwAxA7BflsXzq0uQz6RyeH3O4F8CQChQKSTyvL2DNmo4xV2bHvXGLwU9tifmh3hZd\nKrtZaSRRXTEs6a4ClVjV7JFn++ZMj60E7nYVoFVWNJEbrdyfDRpUeCq9MwKBgEzc\nLNIEPdBUfh87C9DOBpTAACt2Xx6wlQ3DnJecQbRMx3Tnfrsdal8fe2Qq+pZ6R05B\nlzIX0kMN+qMMH9VNjtAVAmtHFBlcsjMimT2BAS7WMWkesDhWpzJC1mj4zJkWYP0b\njmG7KxZIdJv1MKUD4KTFtey4q6q7CKgovboaMShFAoGAbzI79qaVgONoh3owaoaB\nflRbo/LBwH5zO0gIGrp3Wm+ahHfI9nBZyDb0Oy01ihk5dYJe0TU2QUkgfBSie9Sp\ntWyxNyx13AMABWBpPsaWNPwMaugQet1DlNaWVi6lr3UtOyhQcsp4Gx/xtxTgNQps\nAu2LV3Kw0a5U2HFE/axFYWE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fn2pt@roleplaychecker.iam.gserviceaccount.com",
+  "client_id": "112661298339521913229",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fn2pt%40roleplaychecker.iam.gserviceaccount.com"
+}
