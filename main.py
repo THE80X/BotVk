@@ -12,6 +12,7 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from config import main_token, group_token, name_by_id, vk_admin_permission
 
+
 vk_session = vk_api.VkApi(token=main_token)
 longpoll = VkBotLongPoll(vk_session, group_token)
 
@@ -435,57 +436,103 @@ for event in longpoll.listen():
                             str(massive[2]).lower() != ''):
                         hero_name = massive[1]
                         race_name = massive[2]
-                        with open("Races/" + race_name.lower() + ".json", "r") as json_file:
+                        with open("Races/" + race_name.lower() + ".json", "r", encoding='utf-8') as json_file:
                             a = json.load(json_file)
+                            print(a["RACE_NAME"])
                             health = round(
-                                (25 * (a["POINTS"]["START_POINTS"]["SP_START"] * 0.2 +
-                                       a["POINTS"]["START_POINTS"]["IP_START"] * 0.2 +
-                                       a["POINTS"]["START_POINTS"]["PP_START"] * 0.5 +
-                                       a["POINTS"]["START_POINTS"]["AP_START"] * 0.4 +
-                                       a["POINTS"]["START_POINTS"]["BT_START"] * 0.4 +
-                                       a["PERMISSIONS"]["BLEED_ACCESS_START"] * 0.1 +
-                                       a["PERMISSIONS"]["NATURE_ACCESS_START"] * 0.1 +
-                                       a["PERMISSIONS"][
-                                           "MENTAL_ACCESS_START"] * 0.1) ** 1.5), 0)
+                                (25 * (int(a["POINTS"]["START_POINTS"]["SP_START"]) * 0.2 +
+                                       int(a["POINTS"]["START_POINTS"]["IP_START"]) * 0.2 +
+                                       int(a["POINTS"]["START_POINTS"]["PP_START"]) * 0.5 +
+                                       int(a["POINTS"]["START_POINTS"]["AP_START"]) * 0.4 +
+                                       int(a["POINTS"]["START_POINTS"]["BT_START"]) * 0.4 +
+                                       int(a["PERMISSIONS"]["BLEED_ACCESS_START"]) * 0.1 +
+                                       int(a["PERMISSIONS"]["NATURE_ACCESS_START"]) * 0.1 +
+                                       int(a["PERMISSIONS"][
+                                               "MENTAL_ACCESS_START"]) * 0.1) ** 1.5), 0)
                             mind_health = round(
-                                (10 * (a["POINTS"]["START_POINTS"]["IP_START"] * 0.4 +
-                                       a["POINTS"]["START_POINTS"]["FP_START"] * 0.3 +
-                                       a["POINTS"]["START_POINTS"]["BT_START"] * 0.5 +
-                                       a["PERMISSIONS"]["MENTAL_ACCESS_START"] * 0.1 -
-                                       abs((a["PERMISSIONS"]["HOLY_ACCESS_START"] -
-                                            a["PERMISSIONS"][
-                                                "CURSE_ACCESS_START"]) * 0.1)) ** 1.2), 0)
+                                (10 * (int(a["POINTS"]["START_POINTS"]["IP_START"]) * 0.4 +
+                                       int(a["POINTS"]["START_POINTS"]["FP_START"]) * 0.3 +
+                                       int(a["POINTS"]["START_POINTS"]["BT_START"]) * 0.5 +
+                                       int(a["PERMISSIONS"]["MENTAL_ACCESS_START"]) * 0.1 -
+                                       abs((int(a["PERMISSIONS"]["HOLY_ACCESS_START"]) -
+                                            int(a["PERMISSIONS"][
+                                                    "CURSE_ACCESS_START"])) * 0.1)) ** 1.2), 0)
                             stamina = round(
-                                (15 * (a["POINTS"]["START_POINTS"]["SP_START"] * 0.5 +
-                                       a["POINTS"]["START_POINTS"]["MP_START"] * 0.4 +
-                                       a["POINTS"]["START_POINTS"]["PP_START"] * 0.2 +
-                                       a["POINTS"]["START_POINTS"]["AP_START"] * 0.4 +
-                                       a["PERMISSIONS"]["BLEED_ACCESS_START"] * 0.1
+                                (15 * (int(a["POINTS"]["START_POINTS"]["SP_START"]) * 0.5 +
+                                       int(a["POINTS"]["START_POINTS"]["MP_START"]) * 0.4 +
+                                       int(a["POINTS"]["START_POINTS"]["PP_START"]) * 0.2 +
+                                       int(a["POINTS"]["START_POINTS"]["AP_START"]) * 0.4 +
+                                       int(a["PERMISSIONS"]["BLEED_ACCESS_START"]) * 0.1
                                        ) ** 1.2), 0)
                             weight = round(
-                                (5 * (a["POINTS"]["START_POINTS"]["SP_START"] * 0.4 +
-                                      a["POINTS"]["START_POINTS"]["PP_START"] * 0.5 +
-                                      a["POINTS"]["START_POINTS"]["AP_START"] * 0.2
+                                (5 * (int(a["POINTS"]["START_POINTS"]["SP_START"]) * 0.4 +
+                                      int(a["POINTS"]["START_POINTS"]["PP_START"]) * 0.5 +
+                                      int(a["POINTS"]["START_POINTS"]["AP_START"]) * 0.2
                                       ) ** 1.05), 0)
                             mana = round(
-                                (15 * (a["POINTS"]["START_POINTS"]["MP_START"] * 0.5 +
-                                       a["POINTS"]["START_POINTS"]["IP_START"] * 0.4 +
-                                       a["POINTS"]["START_POINTS"]["FP_START"] * 0.2 +
-                                       a["PERMISSIONS"]["MENTAL_ACCESS_START"] * 0.1 +
-                                       abs((a["PERMISSIONS"]["HOLY_ACCESS_START"] -
-                                            a["PERMISSIONS"][
-                                                "CURSE_ACCESS_START"]) * 0.1)) ** 1.2), 0)
+                                (15 * (int(a["POINTS"]["START_POINTS"]["MP_START"]) * 0.5 +
+                                       int(a["POINTS"]["START_POINTS"]["IP_START"]) * 0.4 +
+                                       int(a["POINTS"]["START_POINTS"]["FP_START"]) * 0.2 +
+                                       int(a["PERMISSIONS"]["MENTAL_ACCESS_START"]) * 0.1 +
+                                       abs((int(a["PERMISSIONS"]["HOLY_ACCESS_START"]) -
+                                            int(a["PERMISSIONS"][
+                                                    "CURSE_ACCESS_START"])) * 0.1)) ** 1.2), 0)
                             hunger = round(
-                                (5 * (a["POINTS"]["START_POINTS"]["PP_START"] * 0.3 +
-                                      a["POINTS"]["START_POINTS"]["AP_START"] * 0.3 +
-                                      a["POINTS"]["START_POINTS"]["SP_START"] * 0.3
+                                (5 * (int(a["POINTS"]["START_POINTS"]["PP_START"]) * 0.3 +
+                                      int(a["POINTS"]["START_POINTS"]["AP_START"]) * 0.3 +
+                                      int(a["POINTS"]["START_POINTS"]["SP_START"]) * 0.3
                                       ) ** 1.05), 0)
                             intoxication = round(
-                                (5 * (a["POINTS"]["START_POINTS"]["PP_START"] * 0.7 +
-                                      a["POINTS"]["START_POINTS"]["AP_START"] * 0.1 +
-                                      a["POINTS"]["START_POINTS"]["SP_START"] * 0.1 +
-                                      a["PERMISSIONS"]["BLEED_ACCESS_START"] * 0.1
+                                (5 * (int(a["POINTS"]["START_POINTS"]["PP_START"]) * 0.7 +
+                                      int(a["POINTS"]["START_POINTS"]["AP_START"]) * 0.1 +
+                                      int(a["POINTS"]["START_POINTS"]["SP_START"]) * 0.1 +
+                                      int(a["PERMISSIONS"]["BLEED_ACCESS_START"]) * 0.1
                                       ) ** 1.05), 0)
+                            print("\n"+"Полоски персонажа:")
+                            print("Начальная максимальная полоса здоровья: " + str(health))
+                            print("Начальная максимальная полоса ментального здоровья: " + str(mind_health))
+                            print("Начальная максимальная полоса выносливости: " + str(stamina))
+                            print("Начальное максимальное значение переносимого веса: " + str(weight))
+                            print("Начальная максимальная полоса маны: " + str(mana))
+                            print("Начальная максимальная полоса полноты желудка: " + str(hunger))
+                            print("Начальная максимальная полоса незаражённости организма: " + str(intoxication))
+
+                            fire_res_now = (
+                                    int(a["PERMISSIONS"]["FIRE_ACCESS_START"]) * 5 +
+                                    int(a["RESISTANCES"]["FIRE_RES_START"]))
+                            water_res_now = (
+                                    int(a["PERMISSIONS"]["WATER_ACCESS_START"]) * 5 +
+                                    int(a["RESISTANCES"]["WATER_RES_START"]))
+                            wind_res_now = (
+                                    int(a["PERMISSIONS"]["WIND_ACCESS_START"]) * 5 +
+                                    int(a["RESISTANCES"]["WIND_RES_START"]))
+                            dirt_res_now = (
+                                    int(a["PERMISSIONS"]["DIRT_ACCESS_START"]) * 5 +
+                                    int(a["RESISTANCES"]["DIRT_RES_START"]))
+                            lightning_res_now = (
+                                    int(a["PERMISSIONS"]["LIGHTNING_ACCESS_START"]) * 5 +
+                                    int(a["RESISTANCES"]["LIGHTNING_RES_START"]))
+                            holy_res_now = (
+                                    int(a["PERMISSIONS"]["HOLY_ACCESS_START"]) * 5 +
+                                    int(a["RESISTANCES"]["HOLY_RES_START"]))
+                            curse_res_now = (
+                                    int(a["PERMISSIONS"]["CURSE_ACCESS_START"]) * 5 +
+                                    int(a["RESISTANCES"]["CURSE_RES_START"]))
+                            crush_res_now = int(a["RESISTANCES"]["CRUSH_RES_START"])
+                            cut_res_now = int(a["RESISTANCES"]["CUT_RES_START"])
+                            stab_res_now = int(a["RESISTANCES"]["STAB_RES_START"])
+
+                            print("\n"+"Нынешние значения сопративления: ")
+                            print("Сопративление к огненному урону: " + str(fire_res_now))
+                            print("Сопративление к водному урону: " + str(water_res_now))
+                            print("Сопративление к воздушному урону: " + str(wind_res_now))
+                            print("Сопративление к земляному урону: " + str(dirt_res_now))
+                            print("Сопративление к электрическому урону: " + str(lightning_res_now))
+                            print("Сопративление к светлому урону: " + str(holy_res_now))
+                            print("Сопративление к тёмному урону: " + str(curse_res_now))
+                            print("Сопративление к дробящему урону: " + str(crush_res_now))
+                            print("Сопративление к режущему урону: " + str(cut_res_now))
+                            print("Сопративление к протыкающему урону: " + str(stab_res_now))
                             hero = {
                                 "RACE": a,
                                 "PERSON_INFO":
@@ -557,43 +604,27 @@ for event in longpoll.listen():
                                             },
                                         "RESISTANCES_NOW":
                                             {
-                                                "FIRE_RES_NOW": (
-                                                        a["PERMISSIONS"]["FIRE_ACCESS_START"] * 5 +
-                                                        a["RESISTANCES"]["FIRE_RES_START"]),
-                                                "WATER_RES_NOW": (
-                                                        a["PERMISSIONS"]["WATER_ACCESS_START"] * 5 +
-                                                        a["RESISTANCES"]["WATER_RES_START"]),
-                                                "WIND_RES_NOW": (
-                                                        a["PERMISSIONS"]["WIND_ACCESS_START"] * 5 +
-                                                        a["RESISTANCES"]["WIND_RES_START"]),
-                                                "DIRT_RES_NOW": (
-                                                        a["PERMISSIONS"]["DIRT_ACCESS_START"] * 5 +
-                                                        a["RESISTANCES"]["DIRT_RES_START"]),
-                                                "LIGHTNING_RES_NOW": (
-                                                        a["PERMISSIONS"]["LIGHTNING_ACCESS_START"] * 5 +
-                                                        a["RESISTANCES"]["LIGHTNING_RES_START"]),
-                                                "HOLY_RES_NOW": (
-                                                        a["PERMISSIONS"]["HOLY_ACCESS_START"] * 5 +
-                                                        a["RESISTANCES"]["HOLY_RES_START"]),
-                                                "CURSE_RES_NOW": (
-                                                        a["PERMISSIONS"]["CURSE_ACCESS_START"] * 5 +
-                                                        a["RESISTANCES"]["CURSE_RES_START"]),
-                                                "CRUSH_RES_NOW":
-                                                    a["RESISTANCES"]["CRUSH_RES_START"],
-                                                "CUT_RES_NOW":
-                                                    a["RESISTANCES"]["CUT_RES_START"],
-                                                "STAB_RES_NOW":
-                                                    a["RESISTANCES"]["STAB_RES_START"]
+                                                "FIRE_RES_NOW": fire_res_now,
+                                                "WATER_RES_NOW": water_res_now,
+                                                "WIND_RES_NOW": wind_res_now,
+                                                "DIRT_RES_NOW": dirt_res_now,
+                                                "LIGHTNING_RES_NOW": lightning_res_now,
+                                                "HOLY_RES_NOW": holy_res_now,
+                                                "CURSE_RES_NOW": curse_res_now,
+                                                "CRUSH_RES_NOW": crush_res_now,
+                                                "CUT_RES_NOW": cut_res_now,
+                                                "STAB_RES_NOW": stab_res_now
+
                                             },
                                         "EQUIP_SLOT":
                                             {
                                                 "EQUIP_SLOT_SUM_IS_FREE":
                                                     {
-                                                        "HELMET_STATUS_SUM": a["EQUIPMENT"]["HELMET_STATUS_START"],
-                                                        "CHEST_STATUS_SUM": a["EQUIPMENT"]["CHEST_STATUS_START"],
-                                                        "SHOES_STATUS_SUM": a["EQUIPMENT"]["SHOES_STATUS_START"],
-                                                        "GLOVES_STATUS_SUM": a["EQUIPMENT"]["GLOVES_STATUS_START"],
-                                                        "ITEM_SLOT_SUM": a["EQUIPMENT"]["ITEM_SLOT_START"]
+                                                        "HELMET_STATUS_SUM": int(a["EQUIPMENT"]["HELMET_STATUS_START"]),
+                                                        "CHEST_STATUS_SUM": int(a["EQUIPMENT"]["CHEST_STATUS_START"]),
+                                                        "SHOES_STATUS_SUM": int(a["EQUIPMENT"]["SHOES_STATUS_START"]),
+                                                        "GLOVES_STATUS_SUM": int(a["EQUIPMENT"]["GLOVES_STATUS_START"]),
+                                                        "ITEM_SLOT_SUM": int(a["EQUIPMENT"]["ITEM_SLOT_START"])
                                                     },
                                                 "EQUIP_SLOT_NOW":
                                                     {
@@ -606,7 +637,9 @@ for event in longpoll.listen():
                                             },
                                         "PERSON_LVL":
                                             {
-                                                
+                                                "LVL": 0,
+                                                "EXP_NOW": 0,
+                                                "EXP_TO_LVL": 55
                                             }
                                     },
 
